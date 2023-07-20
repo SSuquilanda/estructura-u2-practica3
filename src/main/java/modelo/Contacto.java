@@ -17,6 +17,10 @@ public class Contacto {
         this.numero = numero;
     }
 
+    public Contacto() {
+    }
+    
+
     public String getNombre() {
         return nombre;
     }
