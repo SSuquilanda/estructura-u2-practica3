@@ -20,15 +20,21 @@ public class Practica3_EsctructuraDatos {
 
         do {
             System.out.println("""
-                               Bienvenido al sistema de Gestion de Contactos 
-                               .1. Agregar un nuevo contacto: 
-                               .2. Buscar contacto por su nombre: 
-                               .3. Eliminar contacto: 
-                               .4. Imprimir arbol de contactos en recorrido PreOrden:
-                               .5. Imprimir arbol en de contactos recorrido InOrden:
-                               .6. Imprimir arbol de contactos en recorrido PostOrden:
-                               .7. Imprimir arbol de contactos en recorrido por niveles:
-                               .8. Salir
+                               Bienvenido al sistema de Gestion de Contactos
+                               --------  Menú Principal   -------
+                               .1.  Agregar un nuevo contacto: 
+                               .2.  Buscar contacto por su nombre: 
+                               .3.  Eliminar contacto: 
+                               .4.  Agregar un correo:
+                               .5.  Agregar una red social:
+                               .6.  Imprimir el arbol de contactos:
+                               .7.  Obtener el número de contactos:
+                               .8.  Obtener el número de contactos por niveles:
+                               .9.  Imprimir arbol de contactos en recorrido PreOrden:
+                               .10. Imprimir arbol en de contactos recorrido InOrden:
+                               .11. Imprimir arbol de contactos en recorrido PostOrden:
+                               .12. Imprimir arbol de contactos en recorrido por niveles:
+                               .13. Salir
                                     """);
 
             opcion = teclado.nextInt();
@@ -65,10 +71,20 @@ public class Practica3_EsctructuraDatos {
 
                     } else {
                         System.out.println("El contacto con nombre '" + nomBuscar + "' no se encontró.");
+                        System.out.println("¿Desea crear un nuevo contacto con ese nombre? (Sí/No)");
+                        String respuesta = teclado.next();
+                        if (respuesta.equalsIgnoreCase("Sí") || respuesta.equalsIgnoreCase("Si")) {
+                            System.out.print("Ingrese el número de teléfono para el nuevo contacto: ");
+                            String nuevoTelefono = teclado.next();
+                            Contacto contactoNuevo = new Contacto(nomBuscar, nuevoTelefono);
+
+                            arbol.insertar(contactoNuevo);
+                        }
                     }
 
                     break;
                 case 3:
+
                     System.out.println("Ha seleccionado la opcion 3: Eliminar contacto ");
                     System.out.println("Ingrese el nombre del contacto a eliminar: ");
                     String nombreC = teclado.next();
@@ -77,26 +93,64 @@ public class Practica3_EsctructuraDatos {
                     System.out.println("Nuevo arbol eliminando el contacto con nombre " + nombreC);
                     arbol.printTreeNode(arbol.getRaiz(), " ", true);
                     break;
-                case 4:
+                case 4: 
+                    System.out.println("Ha seleccionado la opcion 4: Agregar un correo al contacto ");
+                    System.out.print("Ingrese el nombre del contacto al cual se le va a agregar el correo: ");
+                    String nombreCorreo = teclado.next();
+                    System.out.print("Ingrese el correo a agregar: ");
+                    String correo = teclado.next();
+                    Contacto contactoCorreo = arbol.buscarContacto(nombreCorreo);
+                    if (contactoCorreo != null) {
+                        contactoCorreo.agregarCorreo(correo);
+                    } else {
+                        System.out.println("Contacto no encontrado.");
+                    }
+                    break;
+                case 5:
+                    System.out.println("Ha seleccionado la opcion 5: Agregar una red social al contacto ");
+                    System.out.print("Ingrese el nombre del contacto: ");
+                    String nombreRedSocial = teclado.nextLine();
+                    System.out.print("Ingrese el nombre de la red social: ");
+                    String redSocial = teclado.nextLine();
+                    System.out.print("Ingrese la URL de la red social: ");
+                    String url = teclado.nextLine();
+                    Contacto contactoRedSocial = arbol.buscarContacto(nombreRedSocial);
+                    if (contactoRedSocial != null) {
+                        contactoRedSocial.agregarRedSocial(redSocial, url);
+                    } else {
+                        System.out.println("Contacto no encontrado.");
+                    }
+                    break;
+                case 6:
+                    System.out.println("Este es el arbol con los contactos ingresados:");
+                    arbol.printTreeNode(arbol.getRaiz(), " ", true);
+                    System.out.println("-------------------------------------------------");
+                case 7:
+                    System.out.println("Ha seleccionado la opcion 7: Obtener el número de contactos que se han ingresado ");
+                    break;
+                case 8:
+                    System.out.println("Ha seleccionado la opcion 8: Obtener el número de contactos por niveles ");
+                    break;
+                case 9:
                     System.out.println("Ha seleccionado la opcion 4: Imprimir el arbol en recorrido PreOrden ");
                     arbol.preOrderRecursivo(arbol.getRaiz());
                     break;
-                case 5:
+                case 10:
                     System.out.println("Ha seleccionado la opcion 5: Imprimir el arbol en recorrido InOrden ");
                     arbol.inOrderRecursivo(arbol.getRaiz());
                     break;
-               case 6:
+                case 11:
                     System.out.println("Ha seleccionado la opcion 6: Imprimir el arbol en recorrido PostOrden ");
                     arbol.postOrderRecursivo(arbol.getRaiz());
                     break;
-               case 7 :
+                case 12:
                     System.out.println("Ha seleccionado la opcion 7: Imprimir el arbol en recorrido por Niveles ");
                     arbol.imprimirPorNiveles();
                     break;
-               case 8 :
-                   System.out.println("Gracias por preferirnos, que tengas un buen dia:)");
-            
-            }  
-        }while(opcion !=8);
+                case 13:
+                    System.out.println("Gracias por preferirnos, que tengas un buen dia:)");
+
+            }
+        } while (opcion != 13);
     }
 }

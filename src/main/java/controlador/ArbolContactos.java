@@ -4,6 +4,8 @@
  */
 package controlador;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 import modelo.Contacto;
 import modelo.Nodo;
@@ -191,15 +193,44 @@ public Nodo buscarContactoRecursivo(Nodo nodo, String nombre) {
     }
     //Imprimir Arbol por niveles
     public void imprimirPorNiveles() {
-    this.imprimirPorNiveles(this.raiz);
-}
-    private void imprimirPorNiveles(Nodo nodoActual) {
-        if (nodoActual != null) {
-        System.out.println(nodoActual.getContacto().getNombre());
-        this.imprimirPorNiveles(nodoActual.getLeft());
-        this.imprimirPorNiveles(nodoActual.getRight());
+        if (raiz == null) {
+            return;
+        }
+        Queue<Nodo> queue = new LinkedList<>();
+        queue.add(raiz);
+        while (!queue.isEmpty()) {
+            Nodo nodoActual = queue.poll();
+            System.out.println(nodoActual.getContacto());
+            if (nodoActual.getLeft() != null) {
+                queue.add(nodoActual.getLeft());
+            }
+            if (nodoActual.getRight() != null) {
+                queue.add(nodoActual.getRight());
+            }
+        }
     }
-}
+    public int obtenerNumeroContactos() {
+        return obtenerNumeroContactosRecursivo(raiz);
+    }
+
+    private int obtenerNumeroContactosRecursivo(Nodo nodoActual) {
+        if (nodoActual == null) {
+            return 0;
+        }
+        return 1 + obtenerNumeroContactosRecursivo(nodoActual.getLeft()) + obtenerNumeroContactosRecursivo(nodoActual.getRight());
+    }
+
+    public int obtenerNumeroNiveles() {
+        return obtenerNumeroNivelesRecursivo(raiz);
+    }
+
+    private int obtenerNumeroNivelesRecursivo(Nodo nodoActual) {
+        if (nodoActual == null) {
+            return 0;
+        }
+        return 1 + Math.max(obtenerNumeroNivelesRecursivo(nodoActual.getLeft()), obtenerNumeroNivelesRecursivo(nodoActual.getRight()));
+    }
+
 
     public Nodo getRaiz() {
         return raiz;

@@ -4,6 +4,9 @@
  */
 package modelo;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+
 /**
  *
  * @author samanthasuquilandaquilli
@@ -11,11 +14,24 @@ package modelo;
 public class Contacto {
     private String nombre;
     private String numero;
+    LinkedList<String> correos;
+    HashMap<String, String> redesSociales;
 
     public Contacto(String nombre, String numero) {
         this.nombre = nombre;
         this.numero = numero;
+        this.correos = new LinkedList<>();
+        this.redesSociales = new HashMap<>();
     }
+    public void agregarCorreo(String correo) {
+        correos.add(correo);
+    }
+
+    public void agregarRedSocial(String redSocial, String url) {
+        redesSociales.put(redSocial, url);
+    }
+
+    
 
     public Contacto() {
     }
