@@ -163,6 +163,8 @@ public Nodo buscarContactoRecursivo(Nodo nodo, String nombre) {
     }
     
     //Imprimir el arbol en PostOrden
+    //Funcionamiento: se visitan los hijos de un nodo antes de visitar el nodo actual.
+    //El orden de visita es: subarbol izquierdo, subarbol derecho y nodo actual.
     public void postOrderRecursivo(Nodo nodo) {
         if (nodo != null) {
 
@@ -174,6 +176,9 @@ public Nodo buscarContactoRecursivo(Nodo nodo, String nombre) {
 
     }
     //Imprimir el arbol en PreOrden
+    //Funcionamiento: se visita el nodo actual antes de visitar sus hijos. 
+    //Generalmente el recorrido comienza en el nodo raiz.
+    //El orden de visita es: nodo actual, subárbol izquierdo y subárbol derecho.
     public void preOrderRecursivo(Nodo nodo) {
         if (nodo != null) {
             System.out.println(nodo.getContacto() + " - ");
@@ -183,6 +188,8 @@ public Nodo buscarContactoRecursivo(Nodo nodo, String nombre) {
 
     }
     //Imprimir el arbol en InOrder
+    //Funcionamiento: este recorrido nos sirve para obtener los nodos del 
+    //arbol en orden ascendente
     public void inOrderRecursivo(Nodo nodo) {
         if (nodo != null) {
             inOrderRecursivo(nodo.getLeft());
@@ -192,6 +199,8 @@ public Nodo buscarContactoRecursivo(Nodo nodo, String nombre) {
 
     }
     //Imprimir Arbol por niveles
+    //Funcionamiento: comienza en la raiz  y visita los nodos de los siguientes
+    //niveles
     public void imprimirPorNiveles() {
         if (raiz == null) {
             return;
