@@ -93,7 +93,7 @@ public class Practica3_EsctructuraDatos {
                     System.out.println("Nuevo arbol eliminando el contacto con nombre " + nombreC);
                     arbol.printTreeNode(arbol.getRaiz(), " ", true);
                     break;
-                case 4: 
+                case 4:
                     System.out.println("Ha seleccionado la opcion 4: Agregar un correo al contacto ");
                     System.out.print("Ingrese el nombre del contacto al cual se le va a agregar el correo: ");
                     String nombreCorreo = teclado.next();
@@ -127,24 +127,40 @@ public class Practica3_EsctructuraDatos {
                     System.out.println("-------------------------------------------------");
                 case 7:
                     System.out.println("Ha seleccionado la opcion 7: Obtener el número de contactos que se han ingresado ");
+                    System.out.println("-------------------------------------------------");
+
+                    System.out.println("El número de contactos totales es: " + arbol.obtenerNumeroContactos());
+
                     break;
                 case 8:
                     System.out.println("Ha seleccionado la opcion 8: Obtener el número de contactos por niveles ");
+                    System.out.println("-------------------------------------------------");
+
+                    System.out.println("El número de niveles del arbol es : " + arbol.obtenerNumeroNiveles());
+
                     break;
                 case 9:
                     System.out.println("Ha seleccionado la opcion 4: Imprimir el arbol en recorrido PreOrden ");
+                    System.out.println("-------------------------------------------------");
+
                     arbol.preOrderRecursivo(arbol.getRaiz());
                     break;
                 case 10:
                     System.out.println("Ha seleccionado la opcion 5: Imprimir el arbol en recorrido InOrden ");
+                    System.out.println("-------------------------------------------------");
+
                     arbol.inOrderRecursivo(arbol.getRaiz());
                     break;
                 case 11:
                     System.out.println("Ha seleccionado la opcion 6: Imprimir el arbol en recorrido PostOrden ");
+                    System.out.println("-------------------------------------------------");
+
                     arbol.postOrderRecursivo(arbol.getRaiz());
                     break;
                 case 12:
                     System.out.println("Ha seleccionado la opcion 7: Imprimir el arbol en recorrido por Niveles ");
+                    System.out.println("-------------------------------------------------");
+
                     arbol.imprimirPorNiveles();
                     break;
                 case 13:
